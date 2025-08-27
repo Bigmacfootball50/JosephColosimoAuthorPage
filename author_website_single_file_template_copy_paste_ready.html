@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joseph Colosimo — Author</title>
+  <meta name="description" content="Official author website for Joseph Colosimo: books, series, and links to buy on Amazon." />
+  <meta property="og:title" content="Joseph Colosimo — Author" />
+  <meta property="og:description" content="Explore all my books and grab your copy on Amazon." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <style>
+    :root{
+      --bg:#0b1020; --card:#111832; --muted:#a7b0c0; --accent:#58c4ff; --ink:#e8eef8; --ink-2:#cbd6ea; --ring:#58c4ff55;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(180deg,#0b1020,#091022 60%,#0b1020);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Layout */
+    .container{max-width:1150px;margin:auto;padding:24px}
+    header{position:sticky;top:0;backdrop-filter:saturate(140%) blur(8px);background:#0b1020aa;border-bottom:1px solid #1b254a}
+    .nav{display:flex;gap:14px;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:40px;height:40px;border-radius:12px;background:conic-gradient(from 210deg,#58c4ff,#7effb2,#58c4ff);box-shadow:0 0 0 3px #0b1020,0 6px 18px #0008}
+    .brand h1{font-size:18px;margin:0}
+    .brand p{margin:0;color:var(--ink-2);font-size:13px}
+
+    .controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .input, .select{background:var(--card);border:1px solid #223058;border-radius:12px;padding:10px 12px;color:var(--ink);outline:none}
+    .input:focus, .select:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--ring)}
+    .button{background:linear-gradient(180deg,#35b6ff,#1792df);border:0;color:white;padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:600}
+    .button:hover{filter:brightness(1.05)}
+
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;margin-top:28px}
+    .hero h2{font-size:36px;line-height:1.15;margin:0}
+    .hero p{color:var(--ink-2);margin-top:8px}
+    .hero .panel{background:radial-gradient(120% 120% at 0% 0%,#1a2460 0%,#111832 55%,#0f1730 100%);border:1px solid #20305a;border-radius:18px;padding:22px;box-shadow:0 10px 40px #0007}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px}
+    @media (max-width:950px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:620px){.grid{grid-template-columns:1fr}}
+
+    /* Card */
+    .card{background:var(--card);border:1px solid #223058;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 6px 24px #0006}
+    .cover{aspect-ratio:3/4;background:#0a0f24 center/cover no-repeat}
+    .content{padding:14px}
+    .title{font-size:18px;margin:2px 0 6px}
+    .meta{font-size:12px;color:var(--muted)}
+    .desc{font-size:14px;color:var(--ink-2);margin:10px 0 12px}
+    .tags{display:flex;gap:6px;flex-wrap:wrap}
+    .tag{font-size:11px;background:#0c1430;border:1px solid #23345c;color:#cfe6ff;padding:4px 8px;border-radius:999px}
+    .actions{display:flex;gap:8px;margin-top:auto;padding:0 14px 14px}
+    .primary{flex:1}
+
+    /* Footer */
+    footer{margin:36px 0 18px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* Toast */
+    .toast{position:fixed;inset:auto 16px 16px auto;background:#12224a;border:1px solid #274585;color:#dfeaff;padding:10px 12px;border-radius:10px;box-shadow:0 8px 24px #0007;opacity:0;transform:translateY(8px);transition:.25s}
+    .toast.show{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Joseph Colosimo</h1>
+          <p>Children's books • YA sports • Thrillers • Nonfiction</p>
+        </div>
+      </div>
+      <div class="controls">
+        <input id="search" class="input" placeholder="Search books… (title, tag)" />
+        <select id="category" class="select">
+          <option value="all">All categories</option>
+          <option>Children's</option>
+          <option>YA / Teen</option>
+          <option>Thriller</option>
+          <option>Sports / Nonfiction</option>
+          <option>Historical</option>
+        </select>
+        <select id="sort" class="select">
+          <option value="newest">Newest first</option>
+          <option value="alpha">Title A–Z</option>
+        </select>
+        <button id="contactBtn" class="button">Contact</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h2>Welcome! I write stories that entertain, inspire, and make game day more fun.</h2>
+        <p>Browse all my books below. Tap a cover to read the blurb, then hit <em>Buy on Amazon</em> to grab your copy. Want me at a school visit or signing? Hit <strong>Contact</strong> and say hi.</p>
+      </div>
+      <div class="panel">
+        <strong>Quick tips to edit this site:</strong>
+        <ol style="margin:10px 0 0 18px;color:var(--ink-2)">
+          <li>Scroll to the bottom of this file and edit the <code>BOOKS</code> array (title, link, cover, etc.).</li>
+          <li>Add or change categories/tags as you like.</li>
+          <li>Upload this single file anywhere (GitHub Pages, Netlify, etc.).</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <div id="grid" class="grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Joseph Colosimo • <a href="#" id="emailLink">Email me</a> • <a href="https://www.amazon.com/s?k=Joseph+Colosimo+books" target="_blank" rel="noopener">My Amazon author search</a></p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">Link copied!</div>
+
+  <script>
+    // ====== EDIT THIS BOOK LIST ======
+    // Add your real Amazon links and cover image URLs. Categories must match the filter dropdown (or "All").
+    // tip: If you don't have cover URLs yet, leave cover: "" and a gradient placeholder will appear.
+    const BOOKS = [
+      {
+        title: "Llama Drama Pajama Party",
+        category: "Children's",
+        tags: ["rhyming","ages 3–8"],
+        description: "Colorful, silly llama bedtime chaos with interactive pages at the end!",
+        link: "https://www.amazon.com/dp/XXXXXXXX",
+        cover: "",
+        year: 2025
+      },
+      {
+        title: "Giggle Bugs Coloring Book",
+        category: "Children's",
+        tags: ["coloring","activity"],
+        description: "Made‑up, funny bug characters with big personalities and easy coloring shapes.",
+        link: "https://www.amazon.com/dp/XXXXXXXX",
+        cover: "",
+        year: 2025
+      },
+      {
+        title: "Miles Bennett: Underclassman",
+        category: "YA / Teen",
+        tags: ["football","high school"],
+        description: "A new kid, a dream to make the team, and the heat of Friday nights.",
+        link: "https://www.amazon.com/dp/XXXXXXXX",
+        cover: "",
+        year: 2025
+      },
+      {
+        title: "You Weren’t Supposed to Be Here",
+        category: "Thriller",
+        tags: ["suspense","crime"],
+        description: "An ordinary guy gets pulled into a dangerous conspiracy in the big city.",
+        link: "https://www.amazon.com/dp/XXXXXXXX",
+        cover: "",
+        year: 2025
+      },
+      {
+        title: "American Football: A Book of Known Facts",
+        category: "Sports / Nonfiction",
+        tags: ["NFL","facts"],
+        description: "Oddities, records, and wild moments from pro football history.",
+        link: "https://www.amazon.com/dp/XXXXXXXX",
+        cover: "",
+        year: 2025
+      },
+      {
+        title: "The Last Strike",
+        category: "Historical",
+        tags: ["Pittsburgh","early 1900s"],
+        description: "Steel‑era Pittsburgh, labor unrest, and a dangerous vendetta.",
+        link: "https://www.amazon.com/dp/XXXXXXXX",
+        cover: "",
+        year: 2025
+      }
+    ];
+
+    // ====== BASIC SITE SETTINGS (edit if you want) ======
+    const CONTACT_EMAIL = "mailto:yourname@example.com"; // put your real email
+
+    // ====== RENDER LOGIC ======
+    const grid = document.getElementById('grid');
+    const search = document.getElementById('search');
+    const category = document.getElementById('category');
+    const sort = document.getElementById('sort');
+    const toast = document.getElementById('toast');
+
+    function createCard(book){
+      const card = document.createElement('article');
+      card.className = 'card';
+
+      const cover = document.createElement('div');
+      cover.className = 'cover';
+      if (book.cover){ cover.style.backgroundImage = `url(${book.cover})`; }
+      else {
+        cover.style.background = 'linear-gradient(140deg,#122a5b,#0f1c3b)';
+      }
+      card.appendChild(cover);
+
+      const content = document.createElement('div');
+      content.className = 'content';
+
+      const h3 = document.createElement('h3');
+      h3.className = 'title';
+      h3.textContent = book.title;
+      content.appendChild(h3);
+
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      meta.textContent = `${book.category} • ${book.year || 'Year'}`;
+      content.appendChild(meta);
+
+      const desc = document.createElement('p');
+      desc.className = 'desc';
+      desc.textContent = book.description || '';
+      content.appendChild(desc);
+
+      if (book.tags?.length){
+        const tags = document.createElement('div');
+        tags.className = 'tags';
+        book.tags.forEach(t => {
+          const span = document.createElement('span');
+          span.className = 'tag';
+          span.textContent = t;
+          tags.appendChild(span);
+        });
+        content.appendChild(tags);
+      }
+
+      card.appendChild(content);
+
+      const actions = document.createElement('div');
+      actions.className = 'actions';
+
+      const buy = document.createElement('a');
+      buy.className = 'button primary';
+      buy.textContent = 'Buy on Amazon';
+      buy.href = book.link;
+      buy.target = '_blank';
+      buy.rel = 'noopener';
+
+      const copy = document.createElement('button');
+      copy.className = 'button';
+      copy.textContent = 'Copy link';
+      copy.addEventListener('click', async () => {
+        try{
+          await navigator.clipboard.writeText(book.link);
+          toast.classList.add('show');
+          setTimeout(()=>toast.classList.remove('show'), 1200);
+        }catch{ alert('Could not copy'); }
+      });
+
+      actions.appendChild(buy);
+      actions.appendChild(copy);
+      card.appendChild(actions);
+
+      return card;
+    }
+
+    function render(){
+      grid.innerHTML = '';
+      let list = [...BOOKS];
+      const q = search.value.trim().toLowerCase();
+      const cat = category.value;
+      if (q){
+        list = list.filter(b =>
+          b.title.toLowerCase().includes(q) ||
+          (b.tags||[]).some(t => t.toLowerCase().includes(q)) ||
+          (b.description||'').toLowerCase().includes(q)
+        );
+      }
+      if (cat && cat !== 'all'){
+        list = list.filter(b => b.category === cat);
+      }
+      if (sort.value === 'alpha'){
+        list.sort((a,b)=>a.title.localeCompare(b.title));
+      } else {
+        list.sort((a,b)=>(b.year||0)-(a.year||0));
+      }
+      list.forEach(book => grid.appendChild(createCard(book)));
+      if (!list.length){
+        const p = document.createElement('p');
+        p.style.color = 'var(--muted)';
+        p.textContent = 'No books match your search yet.';
+        grid.appendChild(p);
+      }
+    }
+
+    // init
+    render();
+    search.addEventListener('input', render);
+    category.addEventListener('change', render);
+    sort.addEventListener('change', render);
+
+    // footer & contact
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('emailLink').href = CONTACT_EMAIL;
+    document.getElementById('contactBtn').addEventListener('click', ()=>{
+      window.location.href = CONTACT_EMAIL;
+    });
+  </script>
+</body>
+</html>
